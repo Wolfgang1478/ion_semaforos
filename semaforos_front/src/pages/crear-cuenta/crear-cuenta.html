@@ -1,0 +1,48 @@
+<!--
+  Generated template for the CrearCuentaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>crearCuenta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form>
+    <div class="dropdown">
+      <select class="form-control" >
+        <option>Seleccione su compañia</option>
+        <option> Compañia 1 </option>
+        <option> Compañia 2 </option>
+        <option> Compañia 3 </option>
+      </select>
+    </div>
+    <div class="form-group">
+        <ion-item>
+          <ion-label floating #pass>usuario@compañia.com</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating #pass>contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating #pass>confirmar contrasela</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <button ion-button >Crear cuenta</button>
+    </div>
+  </form>
+</ion-content>
