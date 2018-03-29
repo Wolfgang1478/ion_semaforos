@@ -18,20 +18,22 @@
   <ion-list>
 
     <ion-item>
-      <ion-label floating #user>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label floating >Username</ion-label>
+      <ion-input type="text" #user></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label floating #pass>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" #pass></ion-input>
     </ion-item>
   
   </ion-list>
 
   <div padding>
-    <button ion-button (click) = "inciar()">Iniciar Sesion</button>
-    <button ion-button >Crear cuenta</button>
+    <button ion-button (click) = "iniciar(user, pass)">Iniciar Sesion</button>
+    <button ion-button [navPush]='crear' >Crear cuenta</button>
   </div>
-  <page-crear-cuenta></page-crear-cuenta>
+  <div padding>
+    <ion-img style="width:300px;height:280px;" src='../assets/ambulance.svg'></ion-img>
+  </div>
 </ion-content>

@@ -21,12 +21,14 @@ import { CrearCuentaPage } from '../pages/crear-cuenta/crear-cuenta';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CrearCuentaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  ],
+
 })
 export class AppModule {}

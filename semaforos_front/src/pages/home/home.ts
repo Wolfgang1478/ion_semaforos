@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, LoadingController } from 'ionic-angular';
+import { CrearCuentaPage } from '../crear-cuenta/crear-cuenta';
 
 @Component({
   selector: 'page-home',
@@ -8,12 +9,11 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   splash = true;
+  crear:any;
 
-  @ViewChild("user") user;
-  @ViewChild("pass") pass;
-
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public load:LoadingController) {
     this.ionViewLoad();
+    this.crear = CrearCuentaPage;
   }
 
   ionViewLoad(){
@@ -22,8 +22,17 @@ export class HomePage {
     }, 4000);
   }
 
-  iniciar(){
-    console.log("El usuario " + this.user.value + " trato de iniciar sesion con la contraseña: " + this.pass.value);
+  iniciar(user, pass){
+    console.log("El usuario " + user.value + " trato de iniciar sesion con la contraseña: " + pass.value);
+    this.cargando();
+  }
+
+  cargando() {
+    let loader = this.load.create({
+      content: "Iniciando sesión...",
+      duration: 3000
+    });
+    loader.present();
   }
 
 }

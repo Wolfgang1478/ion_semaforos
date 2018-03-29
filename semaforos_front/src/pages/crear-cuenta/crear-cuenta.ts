@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the CrearCuentaPage page.
@@ -15,11 +15,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CrearCuentaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public load:LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CrearCuentaPage');
+  }
+
+  crearCuenta(email, pass1, pass2){
+    if(pass1.value != pass2.value){
+      alert('La contraseña no coincide, ingresela de nuevo');
+    }else{
+      this.cargando();
+    }
+  }
+
+  cargando() {
+    let loader = this.load.create({
+      content: "Creando usuario...",
+      duration: 3000
+    });
+    loader.present();
   }
 
 }
