@@ -20,10 +20,10 @@
         <ion-item (click) = 'log("monitorear")'>Monitorear trafico</ion-item>
         <ion-item (click) = 'log("emergencias")'>Ver emergencias</ion-item>
         <ion-item (click) = 'log("sesión")'>Cerrar sesión</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-nav #mycontent [root]="rootPage"></ion-nav>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content padding>
 
@@ -35,7 +35,7 @@
     <button ion-button full (click) = 'log("Historial")'>Ver historial de semaforos</button>
   </div>
   <div class="row">
-    <button ion-button full (click) = 'log("Emergencias")'>Ver emergencias</button>
+    <button ion-button full [navPush] = 'ambulancia'>Ver ambulancias</button>
   </div>
   
 </ion-content>

@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { CrearCuentaPage } from '../pages/crear-cuenta/crear-cuenta';
 import { PrincipalPage } from '../pages/principal/principal';
 import { UsuarioPage } from '../pages/usuario/usuario';
+import { AmbulanciasPage } from '../pages/ambulancias/ambulancias';
+import { DetalleAmbulanciaPage } from '../pages/detalle-ambulancia/detalle-ambulancia';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     HomePage,
     CrearCuentaPage,
     PrincipalPage,
-    UsuarioPage
+    UsuarioPage,
+    AmbulanciasPage,
+    DetalleAmbulanciaPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { UsuarioPage } from '../pages/usuario/usuario';
     HomePage,
     CrearCuentaPage,
     PrincipalPage,
-    UsuarioPage
+    UsuarioPage,
+    AmbulanciasPage,
+    DetalleAmbulanciaPage
   ],
   providers: [
     StatusBar,
