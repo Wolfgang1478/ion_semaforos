@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { CrearCuentaPage } from '../crear-cuenta/crear-cuenta';
+import { PrincipalPage } from '../principal/principal';
 
 @Component({
   selector: 'page-home',
@@ -10,10 +11,12 @@ export class HomePage {
 
   splash = true;
   crear:any;
+  principal:any;
 
   constructor(public navCtrl: NavController, public load:LoadingController) {
     this.ionViewLoad();
     this.crear = CrearCuentaPage;
+    this.principal = PrincipalPage;
   }
 
   ionViewLoad(){
@@ -24,7 +27,10 @@ export class HomePage {
 
   iniciar(user, pass){
     console.log("El usuario " + user.value + " trato de iniciar sesion con la contraseña: " + pass.value);
-    this.cargando();
+    if(user.value == 'admin' && pass.value == 'adminadmin')
+      this.cargando();
+    else
+      alert('usuario o contraseña invalidos');
   }
 
   cargando() {
@@ -33,6 +39,7 @@ export class HomePage {
       duration: 3000
     });
     loader.present();
+    this.navCtrl.push(this.principal);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { PrincipalPage } from '../principal/principal';
 
 /**
  * Generated class for the CrearCuentaPage page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 })
 export class CrearCuentaPage {
 
+  principal:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public load:LoadingController) {
+    this.principal = PrincipalPage;
   }
 
   ionViewDidLoad() {
@@ -36,6 +40,7 @@ export class CrearCuentaPage {
       duration: 3000
     });
     loader.present();
+    this.navCtrl.push(this.principal);
   }
 
 }

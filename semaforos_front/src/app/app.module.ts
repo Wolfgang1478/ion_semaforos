@@ -7,12 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CrearCuentaPage } from '../pages/crear-cuenta/crear-cuenta';
+import { PrincipalPage } from '../pages/principal/principal';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    CrearCuentaPage
+    CrearCuentaPage,
+    PrincipalPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { CrearCuentaPage } from '../pages/crear-cuenta/crear-cuenta';
   entryComponents: [
     MyApp,
     HomePage,
-    CrearCuentaPage
+    CrearCuentaPage,
+    PrincipalPage
   ],
   providers: [
     StatusBar,
