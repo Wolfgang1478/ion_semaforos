@@ -16,7 +16,7 @@
     <ion-content>
       <ion-title>Menú</ion-title>
       <ion-list>
-        <ion-item (click) = 'log("cuenta")'>Mi cuenta</ion-item>
+        <ion-item [navPush] = 'usuario'>Mi cuenta</ion-item>
         <ion-item (click) = 'log("monitorear")'>Monitorear trafico</ion-item>
         <ion-item (click) = 'log("emergencias")'>Ver emergencias</ion-item>
         <ion-item (click) = 'log("sesión")'>Cerrar sesión</ion-item>

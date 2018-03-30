@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {} from '@types/googlemaps';
+import { UsuarioPage } from '../usuario/usuario';
 
 /**
  * Generated class for the PrincipalPage page.
@@ -18,13 +18,14 @@ export class PrincipalPage {
 
   @ViewChild('map') mapRef: ElementRef;
   mapa:any;
-
+  usuario:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log(this.mapRef);
     this.mostrarMapa();
+    this.usuario = UsuarioPage;
   }
 
   mostrarMapa(){
