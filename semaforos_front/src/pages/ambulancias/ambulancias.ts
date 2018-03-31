@@ -16,6 +16,7 @@ import { DetalleAmbulanciaPage } from '../detalle-ambulancia/detalle-ambulancia'
 export class AmbulanciasPage {
 
   detalle:any;
+  ambulancias = [0,0,0,0];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title>ambulancias</ion-title>
-  </ion-navbar>
+  </ion-navbar> 
 
 </ion-header>
 
@@ -16,7 +16,7 @@
 <ion-content padding>
   <table>
     <tbody>
-      <tr>
+      <tr *ngFor = 'let ambulancia of ambulancias'>
         <td><ion-img style="height:50px; width:50px;" src='../assets/ambulance.svg'></ion-img></td>
         <div class="separadorV"></div>
         <div class="texto">
@@ -25,27 +25,6 @@
         <td><ion-radio value="ambulancia"></ion-radio></td>
         <hr/>
       </tr>
-      <tr>
-        <td><ion-img style="height:50px; width:50px;" src='../assets/ambulance.svg'></ion-img></td>
-        <div class="separadorV"></div>
-        <div class="texto">
-          <td><label>placa abc123 conductor xxxx <br> empresa yyyy</label></td>
-        </div>
-        <div class="separadorV2"></div>
-        <td><ion-radio value="ambulancia"></ion-radio></td>
-        <hr/>
-      </tr>
-      <tr>
-        <td><ion-img style="height:50px; width:50px;" src='../assets/ambulance.svg'></ion-img></td>
-        <div class="separadorV"></div>
-        <div class="texto">
-          <td><label>placa abc123 conductor xxxx <br> empresa yyyy</label></td>
-        </div>
-        <div class="separadorV2"></div>
-        <td><ion-radio value="ambulancia"></ion-radio></td>
-        <hr/>
-      </tr>
-      <!--<tr></tr>-->
     </tbody>
   </table>
   <div class="boton" [navPush] = 'detalle'><button ion-button full>Ver detalles</button></div>

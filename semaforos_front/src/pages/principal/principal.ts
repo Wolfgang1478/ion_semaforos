@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UsuarioPage } from '../usuario/usuario';
 import { AmbulanciasPage } from '../ambulancias/ambulancias';
+import { EmergenciasPage } from '../emergencias/emergencias';
+import { SemaforoPage } from '../semaforo/semaforo';
 
 /**
  * Generated class for the PrincipalPage page.
@@ -21,6 +23,8 @@ export class PrincipalPage {
   mapa:any;
   usuario:any;
   ambulancia:any;
+  emergencia:any;
+  semaforo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -28,7 +32,9 @@ export class PrincipalPage {
     console.log(this.mapRef);
     this.mostrarMapa();
     this.usuario = UsuarioPage;
-    this.ambulancia = AmbulanciasPage
+    this.ambulancia = AmbulanciasPage;
+    this.emergencia = EmergenciasPage;
+    this.semaforo = SemaforoPage;
    }
 
   mostrarMapa(){
@@ -39,6 +45,10 @@ export class PrincipalPage {
       zoom:15
     }
     this.mapa = new google.maps.Map(this.mapRef.nativeElement, opciones);
+  }
+
+  pop(){
+    this.navCtrl.popToRoot();
   }
 
   log(msg):void{
