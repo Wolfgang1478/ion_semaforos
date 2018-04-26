@@ -4,6 +4,8 @@ import { UsuarioPage } from '../usuario/usuario';
 import { AmbulanciasPage } from '../ambulancias/ambulancias';
 import { EmergenciasPage } from '../emergencias/emergencias';
 import { SemaforoPage } from '../semaforo/semaforo';
+import { CarruselPage } from '../carrusel/carrusel';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the PrincipalPage page.
@@ -25,6 +27,8 @@ export class PrincipalPage {
   ambulancia:any;
   emergencia:any;
   semaforo:any;
+  carrusel:any
+  tabs:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -35,10 +39,12 @@ export class PrincipalPage {
     this.ambulancia = AmbulanciasPage;
     this.emergencia = EmergenciasPage;
     this.semaforo = SemaforoPage;
+    this.carrusel = CarruselPage;
+    this.tabs = TabsPage;
    }
 
   mostrarMapa(){
-    
+
     let ubicacion = new google.maps.LatLng(4.6324, -74.0655);
     let opciones = {
       center:ubicacion,

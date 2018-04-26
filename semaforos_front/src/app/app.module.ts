@@ -14,6 +14,8 @@ import { DetalleAmbulanciaPage } from '../pages/detalle-ambulancia/detalle-ambul
 import { EmergenciasPage } from '../pages/emergencias/emergencias';
 import { SemaforoPage } from '../pages/semaforo/semaforo';
 import { DetalleSemaforoPage } from '../pages/detalle-semaforo/detalle-semaforo';
+import { CarruselPage } from '../pages/carrusel/carrusel';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { DetalleSemaforoPage } from '../pages/detalle-semaforo/detalle-semaforo'
     DetalleAmbulanciaPage,
     EmergenciasPage,
     SemaforoPage,
-    DetalleSemaforoPage
+    DetalleSemaforoPage,
+    CarruselPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { DetalleSemaforoPage } from '../pages/detalle-semaforo/detalle-semaforo'
     DetalleAmbulanciaPage,
     EmergenciasPage,
     SemaforoPage,
-    DetalleSemaforoPage
+    DetalleSemaforoPage,
+    CarruselPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
