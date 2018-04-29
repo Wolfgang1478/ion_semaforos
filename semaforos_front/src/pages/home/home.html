@@ -9,14 +9,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating >Username</ion-label>
+      <ion-input type="text" #user></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" #pass></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button (click) = "iniciar(user, pass)">Iniciar Sesion</button>
+    <button ion-button [navPush]='crear' >Crear cuenta</button>
+  </div>
+  <div padding>
+    <ion-img style="width:300px;height:280px;" src='../assets/ambulance.svg'></ion-img>
+  </div>
 </ion-content>
