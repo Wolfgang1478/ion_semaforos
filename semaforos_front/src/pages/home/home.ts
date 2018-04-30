@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { CrearCuentaPage } from '../crear-cuenta/crear-cuenta';
 import { PrincipalPage } from '../principal/principal';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'page-home',
@@ -12,11 +15,22 @@ export class HomePage {
   splash = true;
   crear:any;
   principal:any;
+  usuarios: any[]
 
-  constructor(public navCtrl: NavController, public load:LoadingController) {
+  url = 'http://127.0.0.1:8000/'
+
+  constructor(public navCtrl: NavController, public load:LoadingController, private http: Http) {
     this.ionViewLoad();
     this.crear = CrearCuentaPage;
     this.principal = PrincipalPage;
+    this.getUsuarios().subscribe((data: any[]) =>{ 
+      this.usuarios = data
+    })
+  }
+
+  getUsuarios(){
+    return this.http.get(this.url + 'usuarios/').
+    map((res: Response) => res.json())
   }
 
   ionViewLoad(){
@@ -26,11 +40,13 @@ export class HomePage {
   }
 
   iniciar(user, pass){
-    console.log("El usuario " + user.value + " trato de iniciar sesion con la contraseña: " + pass.value);
-    if(user.value == 'admin' && pass.value == 'adminadmin')
-      this.cargando();
-    else
-      alert('usuario o contraseña invalidos');
+    for(let i = 0; i < this.usuarios.length; i++){
+      if(this.usuarios[i].correo == user.value && this.usuarios[i].contrasena == pass.value){
+        this.cargando()
+      }else{
+        alert('usuario o contraseña invalidos');
+      }
+    } 
   }
 
   cargando() {

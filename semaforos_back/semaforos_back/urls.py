@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from monitoreo import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^usuarios/$', views.usuarios),
+    url(r'^ambulancias/$', views.ambulancias),
+    url(r'^semaforos/$', views.semaforos),
+    url(r'^companias/$', views.companias),
+    url(r'^companiasAmbulancia/$', views.companiasAmbulancia),
+    url(r'^emergencias/$', views.emergencias),
 ]
