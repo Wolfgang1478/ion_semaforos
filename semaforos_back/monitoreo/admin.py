@@ -6,3 +6,6 @@ from monitoreo.models import *
 admin.site.register(Usuario)
 admin.site.register(Semaforo)
 admin.site.register(Compania)
+admin.site.register(Ambulancia)
+admin.site.register(CompaniaAmbulancia)
+admin.site.register(Emergencia)

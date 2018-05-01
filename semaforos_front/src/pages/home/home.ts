@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { CrearCuentaPage } from '../crear-cuenta/crear-cuenta';
 import { PrincipalPage } from '../principal/principal';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/map'
+import { HttpClient } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -19,18 +18,23 @@ export class HomePage {
 
   url = 'http://127.0.0.1:8000/'
 
-  constructor(public navCtrl: NavController, public load:LoadingController, private http: Http) {
+  constructor(public navCtrl: NavController, public load:LoadingController, private http: HttpClient, private pop: AlertController) {
     this.ionViewLoad();
     this.crear = CrearCuentaPage;
     this.principal = PrincipalPage;
-    this.getUsuarios().subscribe((data: any[]) =>{ 
+    this.http.get(this.url + 'usuarios/').subscribe((data: any[]) => {
       this.usuarios = data
+      console.log(this.usuarios)
     })
   }
 
-  getUsuarios(){
-    return this.http.get(this.url + 'usuarios/').
-    map((res: Response) => res.json())
+  presentAlert(titulo, cuerpo) {
+    let alert = this.pop.create({
+      title: titulo,
+      subTitle: cuerpo,
+      buttons: ['Cerrar']
+    });
+    alert.present();
   }
 
   ionViewLoad(){
@@ -43,8 +47,8 @@ export class HomePage {
     for(let i = 0; i < this.usuarios.length; i++){
       if(this.usuarios[i].correo == user.value && this.usuarios[i].contrasena == pass.value){
         this.cargando()
-      }else{
-        alert('usuario o contraseña invalidos');
+      }else if(this.usuarios.length - 1 == i){
+        this.presentAlert('Error', 'Usuario o contraseña incorrecta')
       }
     } 
   }

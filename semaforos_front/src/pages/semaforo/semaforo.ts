@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http'
 import { DetalleSemaforoPage } from '../detalle-semaforo/detalle-semaforo';
+
 
 /**
  * Generated class for the SemaforoPage page.
@@ -16,9 +18,15 @@ import { DetalleSemaforoPage } from '../detalle-semaforo/detalle-semaforo';
 })
 export class SemaforoPage {
 
-  semaforos = [0,0,0,0];
+  semaforos: any[];
   detalle:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  url = 'http://localhost:8000/'
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
+    this.http.get(this.url + 'semaforos/').subscribe((data: any[]) =>{
+      this.semaforos = data
+      console.log(this.semaforos)
+    })
   }
 
   ionViewDidLoad() {

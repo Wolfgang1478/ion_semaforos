@@ -1,11 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UsuarioPage } from '../usuario/usuario';
 import { AmbulanciasPage } from '../ambulancias/ambulancias';
 import { EmergenciasPage } from '../emergencias/emergencias';
 import { SemaforoPage } from '../semaforo/semaforo';
 import { CarruselPage } from '../carrusel/carrusel';
 import { TabsPage } from '../tabs/tabs';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the PrincipalPage page.
@@ -29,7 +30,7 @@ export class PrincipalPage {
   semaforo:any;
   carrusel:any
   tabs:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popUp: AlertController, private load: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -54,7 +55,16 @@ export class PrincipalPage {
   }
 
   pop(){
+    this.cargando()
     this.navCtrl.popToRoot();
+  }
+
+  cargando() {
+    let loader = this.load.create({
+      content: "Cerrando sesión...",
+      duration: 3000
+    });
+    loader.present();
   }
 
   log(msg):void{

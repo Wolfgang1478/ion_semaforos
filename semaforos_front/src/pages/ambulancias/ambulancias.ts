@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DetalleAmbulanciaPage } from '../detalle-ambulancia/detalle-ambulancia';
+import { HttpClient } from '@angular/common/http'
 /**
  * Generated class for the AmbulanciasPage page.
  *
@@ -16,9 +17,13 @@ import { DetalleAmbulanciaPage } from '../detalle-ambulancia/detalle-ambulancia'
 export class AmbulanciasPage {
 
   detalle:any;
-  ambulancias = [0,0,0,0];
+  ambulancias: any[];
+  url = 'http://localhost:8000/'
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
+    this.http.get(this.url + 'ambulancias/').subscribe((data: any[]) => {
+      this.ambulancias = data
+    })
   }
 
   ionViewDidLoad() {

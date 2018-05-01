@@ -14,7 +14,7 @@ class SerializadorCompania(serializers.ModelSerializer):
 class SerializadorSemaforo(serializers.ModelSerializer):
     class Meta:
         model = Semaforo
-        fields = ('id', 'estado', 'ultima_interrupcion', 'reinicio_ciclo', 'recibio_interrupcion', 'inicio_interrupcion', 'semaforo_replica')
+        fields = ('id', 'estado', 'descripcion', 'ultima_interrupcion', 'reinicio_ciclo', 'recibio_interrupcion', 'inicio_interrupcion', 'semaforo_replica')
 
 class SerializadorCompaniaAmbulancia(serializers.ModelSerializer):
     class Meta:

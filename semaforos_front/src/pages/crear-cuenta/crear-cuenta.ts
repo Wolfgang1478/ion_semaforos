@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/map'
+import { HttpClient } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the CrearCuentaPage page.
@@ -23,26 +22,21 @@ export class CrearCuentaPage {
   companias: any[]
   url = 'http://localhost:8000/'
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public load:LoadingController, private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public load:LoadingController, private http: HttpClient, private pop: AlertController) {
     this.principal = PrincipalPage;
-    this.getCompanias().subscribe((data: any[]) =>{ 
+    this.http.get(this.url + 'companias/').subscribe((data: any[]) => {
       this.companias = data
     })
   }
 
-  getCompanias(){
-    return this.http.get(this.url + 'companias/').
-    map((res: Response) => res.json())
-  }
-
   postUsuario(compania, email, pass){
-    
-    alert('creando usuario')
     this.http.post(this.url + 'usuarios/', {
-      email: email,
       compania: compania,
-      contrasena: pass
-    }).subscribe((res: Response) => res.json());
+      correo: email.value,
+      contrasena: pass.value
+    }).subscribe((data: any[]) => {
+      this.cargando()
+    })
   }
 
   ionViewDidLoad() {
@@ -55,10 +49,19 @@ export class CrearCuentaPage {
 
   crearCuenta(compania, email, pass1, pass2){
     if(pass1.value != pass2.value){
-      alert('La contraseña no coincide, ingresela de nuevo');
+      this.presentAlert('Error', 'Las contraseñas no coinciden')
     }else{
       this.postUsuario(compania.split('.')[0], email, pass1)
     }
+  }
+
+  presentAlert(titulo, cuerpo) {
+    let alert = this.pop.create({
+      title: titulo,
+      subTitle: cuerpo,
+      buttons: ['Cerrar']
+    });
+    alert.present();
   }
 
   cargando() {
